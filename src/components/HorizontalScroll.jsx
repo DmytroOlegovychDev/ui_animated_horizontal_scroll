@@ -3,11 +3,11 @@ import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 
 const images = [
-  "/images/img-1.jpg",
-  "/images/img-2.jpg",
-  "/images/img-3.jpg",
-  "/images/img-4.jpg",
-  "/images/img-5.jpg",
+  `${import.meta.env.BASE_URL}images/img-1.jpg`,
+  `${import.meta.env.BASE_URL}images/img-2.jpg`,
+  `${import.meta.env.BASE_URL}images/img-3.jpg`,
+  `${import.meta.env.BASE_URL}images/img-4.jpg`,
+  `${import.meta.env.BASE_URL}images/img-5.jpg`,
 ];
 
 export default function HorizontalScroll() {
@@ -44,11 +44,10 @@ export default function HorizontalScroll() {
           <span className="text-lime-500 flex items-center gap-5">
             Scroll
             <img
-              src="/images/right-arrow.png"
-              aly="arrow images"
+              src={`${import.meta.env.BASE_URL}images/right-arrow.png`}
+              alt="arrow images"
               width={120}
               height={120}
-              className=""
             />
           </span>
         </h1>
