@@ -18,15 +18,14 @@ export default function HorizontalScroll() {
     () => {
       const images = imgsRef.current;
       gsap.to(images, {
-        x: () => -(images.scrollWidth - window.innerWidth),
+        x: () => -(images.scrollWidth - containerRef.current.offsetWidth),
         scrollTrigger: {
           trigger: triggerRef.current,
           pin: true,
           scrub: 1,
           start: "top top",
-          end: () => `+=${images.scrollWidth} `,
-          //   to view the start and end of the scroll //
-          //   markers: true,
+          end: () =>
+            `+=${images.scrollWidth - containerRef.current.offsetWidth}`,
         },
       });
     },
@@ -55,10 +54,13 @@ export default function HorizontalScroll() {
       {/* images wrapper */}
       <section className="bg-emerald-900/20 overflow-hidden" ref={triggerRef}>
         <div className="flex items-center h-screen flex-nowrap will-change-transform">
-          <div className=" flex flex-nowrap gap-5" ref={imgsRef}>
+          <div
+            className=" flex flex-nowrap gap-3 sm:gap-5 will-change-transform"
+            ref={imgsRef}
+          >
             {images.map((img, index) => (
               <div
-                className="w-[35vw] shrink-0 bg-emerald-800/20 shadow-2xl hover:shadow-lg hover:shadow-green-400/90 transition-shadow p-5"
+                className="w-[80vw] sm:w-[50vw] lg:w-[35vw] shrink-0 bg-emerald-800/20 shadow-2xl hover:shadow-lg hover:shadow-green-400/90 transition-shadow p-5"
                 key={index}
               >
                 <img
